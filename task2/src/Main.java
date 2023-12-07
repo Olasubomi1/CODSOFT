@@ -9,35 +9,31 @@ public class Main {
         Main.calculateGrade();
     }
     private static void calculateGrade(){
-        int totalSubject;
+        int totalCourses;
         int totalScoreAvailable;
         int averagePercentage;
         int totalStudentScore = 0;
-        String subject;
+        String course;
         int score;
 
-        System.out.println("Enter total number of subjects.");
-        totalSubject =  scanner.nextInt();
-        Map<String, Integer> subjects = new HashMap<>();
-        System.out.println("Enter each subject and its score.");
-        for (int i = 1; i <= totalSubject; i++) {
-            System.out.print("Subject "+ i + " = ");
-            subject = scanner.next();
-            System.out.print(subject + " score = " );
+        System.out.println("Enter total number of courses.");
+        totalCourses =  scanner.nextInt();
+        Map<String, Integer> courses = new HashMap<>();
+        System.out.println("Enter each course and its score.");
+        for (int i = 1; i <= totalCourses; i++) {
+            System.out.print("Course "+ i + " = ");
+            course = scanner.next();
+            System.out.print(course + " score = " );
             score = scanner.nextInt();
             totalStudentScore = totalStudentScore + score;
-            subjects.put(subject, score);
+            courses.put(course, score);
         }
-        totalScoreAvailable = (subjects.size() * 100);
-        System.out.println(totalScoreAvailable);
-        System.out.println(totalStudentScore);
-        averagePercentage = ((totalStudentScore/totalScoreAvailable) * 100);
-        System.out.println(averagePercentage);
-        System.out.println(subjects);
-        for (Map.Entry<String, Integer> course : subjects.entrySet()){
-            String key = course.getKey();
-            int value = course.getValue();
-            System.out.println("Subject = " + key + ", Score = " + value);
+        totalScoreAvailable = (courses.size() * 100);
+        averagePercentage = ((totalStudentScore * 100/totalScoreAvailable));
+        for (Map.Entry<String, Integer> currentCourse : courses.entrySet()){
+            String key = currentCourse.getKey();
+            int value = currentCourse.getValue();
+            System.out.println("Course = " + key + ", Score = " + value);
         }
         String studentGrade = new Main().assignGrade(averagePercentage);
         System.out.println("Student Average percentage = " + averagePercentage + "%" + "\nStudent Grade = " + studentGrade);
